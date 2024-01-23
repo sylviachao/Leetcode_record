@@ -1,0 +1,29 @@
+Questions:
+Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
+
+Solution:
+For two sum, we can assume another number equals (target-exists number).
+The problem can be solved by Brute Force, using two for-loop to find the answer:
+Python:
+class Solution(object):
+    def twoSum(self, nums, target):
+        n = len(nums)
+        for i in range(n-1):
+            for j in range(i+1,n):
+                if nums[i] + nums[j] == target:
+                    return [i,j]
+        return null
+This solution has a time complexity of O(n^2).
+Meanwhile, we could use a One-pass Hash Table, by checking if the complement (target-nums[i]) exists in the hash table we stored the passing value.
+Python:
+class Solution(object):
+    def twoSum(self, nums, target):
+        prevMap = {} # val : index
+        
+        for i, n in enumerate(nums):
+            diff = target - n
+            if diff in prevMap:
+                return [prevMap[diff], i]
+            prevMap[n] = i
+        return null
+This solution has a time complexity of O(n).
