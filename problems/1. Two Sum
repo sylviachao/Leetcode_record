@@ -1,10 +1,11 @@
-Questions:
+# Questions:
 Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
 
-Solution:
+# Solution:
 For two sum, we can assume another number equals (target-exists number).
 The problem can be solved by Brute Force, using two for-loop to find the answer:
 Python:
+```CPP
 class Solution(object):
     def twoSum(self, nums, target):
         n = len(nums)
@@ -13,9 +14,12 @@ class Solution(object):
                 if nums[i] + nums[j] == target:
                     return [i,j]
         return null
+```
 This solution has a time complexity of O(n^2).
 Meanwhile, we could use a One-pass Hash Table, by checking if the complement (target-nums[i]) exists in the hash table we stored the passing value.
 Python:
+
+```CPP
 class Solution(object):
     def twoSum(self, nums, target):
         prevMap = {} # val : index
@@ -26,4 +30,5 @@ class Solution(object):
                 return [prevMap[diff], i]
             prevMap[n] = i
         return null
+```
 This solution has a time complexity of O(n).
